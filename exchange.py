@@ -31,4 +31,6 @@ url = "https://v6.exchangerate-api.com/v6/" + key + "/latest/USD"
 
 testing = CurrencyConversion(url)
 
-print(testing.conversion('EUR', 'GBP', 1000.00))
+
+# Printed out all the keys for the currency codes
+print(list(testing.currency.keys()))
