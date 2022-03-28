@@ -1,4 +1,3 @@
-from cgi import test
 import requests
 import os
 from dotenv import load_dotenv
@@ -8,7 +7,14 @@ class CurrencyConversion():
         self.data = requests.get(url).json()
         self.currency = self.data["conversion_rates"]
     
-    
+    def conversion(self, from_currency, to_currency, amount):
+        initial_amount = amount
+
+        if from_currency != "USD":
+            amount = amount / self.currency[from_currency]
+        
+        amount = round(amount * self.currency[to_currency], 4)
+        return amount
 
 
 
@@ -25,4 +31,4 @@ url = "https://v6.exchangerate-api.com/v6/" + key + "/latest/USD"
 
 testing = CurrencyConversion(url)
 
-print(testing.currency["USD"])
+print(testing.conversion('EUR', 'GBP', 1000.00))
