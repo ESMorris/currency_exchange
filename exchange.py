@@ -16,7 +16,8 @@ class CurrencyConversion():
         amount = round(amount * self.currency[to_currency], 4)
         return amount
 
-
+class CurrencyConversionUI():
+    pass
 
 
 load_dotenv()
